@@ -1,6 +1,6 @@
 import unittest
 
-from testee.services.selenium_service import loadWebDriver_localCHROME
+from testee.services.selenium_service import loadWebDriver_localCHROME, take_snapshot
 
 
 class TestAdd(unittest.TestCase):
@@ -17,6 +17,7 @@ class TestAdd(unittest.TestCase):
         wd = loadWebDriver_localCHROME()
         # go to the google home page
         wd.get('http://www.google.com')
+        take_snapshot(wd)
 
         # the page is ajax so the title is originally this:
         print(wd.title)
@@ -26,6 +27,7 @@ class TestAdd(unittest.TestCase):
 
         # type in the search
         inputElement.send_keys('cheese!')
+        take_snapshot(wd)
 
         # submit the form (although google automatically searches now without submitting)
         inputElement.submit()
@@ -36,6 +38,7 @@ class TestAdd(unittest.TestCase):
 
             # we have to wait for the page to refresh, the last thing that seems to be updated is the title
             WebDriverWait(wd, 10).until(EC.title_contains('cheese!'))
+            take_snapshot(wd)
 
             # You should see 'cheese! - Google Search'
             print(wd.title)
