@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-export PYTHONPATH="/home/cmd/Thesis/QA/selenium_first:$PYTHONPATH"
+s=${BASH_SOURCE} ; s=$(dirname "$s") ; s=$(cd "$s" && pwd) ; SCRIPT_HOME="$s"
+
+export PYTHONPATH="$SCRIPT_HOME:$PYTHONPATH"
 pipenv run pytest
