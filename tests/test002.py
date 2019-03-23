@@ -52,21 +52,24 @@ class TestAdd(unittest.TestCase):
         wd.get(url)
 
         list_levels_title = wd.find_elements_by_xpath(
-            '//div[contains(@class, "box-circle") '
-            'and contains(@class, "none-gutter-left") '
-            'and contains(@class, "none-gutter-right")]'
+            '//div[contains(@class, "box-circle")'
+            '  and contains(@class, "none-gutter-left")'
+            '  and contains(@class, "none-gutter-right")]'
             '/h2[contains(@class, "text-center")'
-            ' and contains(@class, "underline")]')
+            'and contains(@class, "underline")]'
+        )
 
         list_big_num = wd.find_elements_by_xpath(
             '//div[contains(@class, "none-gutter-right")]'
-            '/h1[contains(@class, "big-num")]')
+            '/h1[contains(@class, "big-num")]'
+        )
 
         list_start_from = wd.find_elements_by_xpath(
-            '//div[contains(@class,"box-circl")'
-            ' and contains(@class,"none-gutter-left")'
-            ' and contains(@class, "none-gutter-right")]'
-            '/p[contains(@class, "text-center")]')
+            '//div[contains(@class, "box-circl")'
+            ' and  contains(@class, "none-gutter-left")'
+            ' and  contains(@class, "none-gutter-right")]'
+            '/p[contains(@class, "text-center")]'
+        )
 
         # get actual output
         OUT = lambda: None
@@ -92,6 +95,6 @@ class TestAdd(unittest.TestCase):
         assert OUT.level2_big_num == '100'
         assert OUT.level3_big_num == '200'
 
-        assert OUT.level1_starting_from.find('2.26') != -1
+        assert OUT.level1_starting_from.find('2.26') != -1 #TODO replace .find() by 2.26 in OUT.level1_starting_from
         assert OUT.level2_starting_from.find('4.23') != -1
         assert OUT.level3_starting_from.find('7.93') != -1
