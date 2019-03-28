@@ -30,8 +30,8 @@ def loadWebDriver_localCHROME(windowSize=WindowSize.PC, implicitWait=IMPLICIT_WA
 
     #TODO load chrome binary path auto instead of hardcoded as below
     # tell selenium to use the beta/dev channel version of chrome
-    # options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'  # for MacOS
-    options.binary_location = '/usr/bin/google-chrome' #for linux - get by `which google-chrome`
+    options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'  # for MacOS
+    # options.binary_location = '/usr/bin/google-chrome' #for linux - get by `which google-chrome`
 
     # set headless mode for chrome
     options.add_argument('headless')

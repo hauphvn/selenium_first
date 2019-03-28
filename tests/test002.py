@@ -6,7 +6,7 @@ from testee.services.selenium_service import loadWebDriver_localCHROME, take_sna
 class TestAdd(unittest.TestCase):
 
     def test_homepage(self):
-        url = 'https://release.gigacover.com'
+        url = 'https://staging.gigacover.com'
         wd = loadWebDriver_localCHROME()
 
         wd.get(url)
