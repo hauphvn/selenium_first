@@ -53,6 +53,19 @@ def loadWebDriver_localCHROME(windowSize=WindowSize.PC, implicitWait=IMPLICIT_WA
     driver.implicitly_wait(implicitWait)  # in seconds
     return driver
 
+def loadWebDriver_localFIREFOX():
+    #region webdriver option
+    # create options that be passed to the WebDriver initializers
+    os.environ['MOZ_HEADLESS'] = '1'
+    # options = Options()
+    # options.headless = True
+    # options = webdriver.FirefoxOptions()
+
+    driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver')  # If nothing happens then everything worked! Normally, a new browser window would pop open at this point with a warning about being controlled by automated test software. It not appearing is exactly what we want to happen in headless mode and it means that we could be running our code on a server that doesn't even have a graphical environment. Everything from here on out is just standard Selenium so if you were only trying to figure out how to get it working with Chrome in headless mode then that's it!
+    # config the implicit wait aka. default waiting time for any action ref. http://www.seleniumhq.org/docs/04_webdriver_advanced.jsp#implicit-waits
+    # driver.implicitly_wait(implicitWait)  # in seconds
+    return driver
+
 
 APP_HOME         = os.path.abspath(os.path.dirname(__file__)+'../../../')
 SNAPSHOT_VAULT   = f'{APP_HOME}/_snapshot_/vault'
@@ -81,3 +94,4 @@ def take_snapshot(driver, prefix=None, suffix=None):
     print(f'Snapshot taken at {filename}')
 
     return filename
+
