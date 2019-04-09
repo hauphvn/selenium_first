@@ -8,4 +8,4 @@ docker-compose -f "$SCRIPT_HOME/docker-compose.yml" \
                -d \
                --force-recreate --remove-orphans \
                --scale selenium-node-ch=1 \
-               --scale selenium-node-ff=0
+               --scale selenium-node-ff=1

@@ -1,4 +1,5 @@
 import os
+import time
 from datetime import datetime
 from selenium import webdriver
 
@@ -22,16 +23,22 @@ class WindowSize:
     MB = '%sx%s' % (MB_width, MB_height)
     MB_dict = dict(width=MB_width, height=MB_height)
 
+def loadWebDriver_seleniumGrid(browserType):
+    browser = webdriver.Remote(
+        command_executor='http://localhost:4444/wd/hub',
+        desired_capabilities= {'browserName': browserType}
+    )
+    return browser
 
 def loadWebDriver_localCHROME(windowSize=WindowSize.PC, implicitWait=IMPLICIT_WAIT):
     #region webdriver option
     # create options that be passed to the WebDriver initializer
     options = webdriver.ChromeOptions()
 
-    #TODO load chrome binary path auto instead of hardcoded as below
+    # TODO load chrome binary path auto instead of hardcoded as below
     # tell selenium to use the beta/dev channel version of chrome
-    options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'  # for MacOS
-    # options.binary_location = '/usr/bin/google-chrome' #for linux - get by `which google-chrome`
+    # options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'  # for MacOS
+    options.binary_location = '/usr/bin/google-chrome' #for linux - get by `which google-chrome`
 
     # set headless mode for chrome
     options.add_argument('headless')
@@ -95,3 +102,8 @@ def take_snapshot(driver, prefix=None, suffix=None):
 
     return filename
 
+
+def main():
+    loadWebDriver_seleniumGrid()
+if __name__ == 'main':
+    main()
